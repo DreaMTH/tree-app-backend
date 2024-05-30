@@ -1,6 +1,5 @@
 import { HydratedDocument } from 'mongoose';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import mongoose from 'mongoose';
 
 export type Node = {
   parent: string;
@@ -22,11 +21,12 @@ export class Tree {
         nodeName: {
           type: String,
           required: true,
+          unique: true,
         },
       },
     ],
   })
-  nodes: Node[];
+  nodes: [];
 }
 export const TreeSchema = SchemaFactory.createForClass(Tree);
 /*export const treeModel =
